@@ -5,7 +5,7 @@ function codePop = genInitPop(n, p, d, maxSize)
     
     %Randomly generate the entries in each matrix
     for i = 1 : p
-        numWords = randi(maxSize);
+        numWords = randi([2,maxSize]);
         %Shrink array to have only size required. Need numWords+1 because
         %indexing starts at 1 in MATLAB
         codePop{i}(numWords+1:maxSize, :) = []; 
@@ -18,7 +18,7 @@ function codePop = genInitPop(n, p, d, maxSize)
     end
 end
 
-%Create arrays to store generator matrices for the codes
+%Create arrays to store code matrices
 function result = createArrays(nArrays, rows, cols)
     result = cell(1, nArrays);
     for i = 1 : nArrays

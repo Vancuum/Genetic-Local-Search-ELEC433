@@ -1,4 +1,6 @@
 %Find the minimum hamming distance between a word and a code
+%Size is the size of the code. Need to pass size since when filling a
+%matrix we will have tons of zero entries that we don't want to check.
 function check = relativeDist(word, code, d, size)
     minDist = sum(word);
     check = 1; %Assume codeword maintains distance requirements
