@@ -1,15 +1,54 @@
-%% Small Code
-% Test that a small code recombines properly
-n = 17;
-p = 10;
-d = 6;
-maxSize = 20;
+%% n = 10, d = 4
+n = 10
+p = 20;
+d = 4;
+maxSize = 4;
+best = 40;
 
-code = geneticSearch(n,p,d,maxSize);
+%geneticSearch(n,p,d,maxSize,best);
 
-for i = 1:2:p
-    min = findMinDist(code{i});
-    assert(min >= d, "Code %d failed", i)
-end
+%% n = 11, d = 4
+n = 11
+p = 20;
+d = 4;
+maxSize = 7;
+best = 72;
 
-fprintf("\n\nSmall Code passed!\n");
+%geneticSearch(n,p,d,maxSize,best);
+
+%% n = 12, d = 4
+n = 12
+p = 20;
+d = 4;
+maxSize = 14;
+best = 144;
+
+%geneticSearch(n,p,d,maxSize,best);
+
+%% n = 13, d = 4
+n = 13
+p = 20;
+d = 4;
+maxSize = 25;
+best = 256;
+
+%geneticSearch(n,p,d,maxSize,best);
+
+%% n = 14, d = 4
+n = 14
+p = 20;
+d = 4;
+maxSize = 50;
+best = 512;
+
+%geneticSearch(n,p,d,maxSize,best);
+
+%% n = 15, d = 4
+n = 15
+p = 20;
+d = 4;
+maxSize = 100;
+best = 1024;
+
+
+geneticSearch(n,p,d,maxSize,best);

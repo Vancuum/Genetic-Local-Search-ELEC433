@@ -1,5 +1,5 @@
 %Find the successor of an element
-function succ = successor(x, n, allBin)
+function succ = successor(currentIndex, n, allBin)
 %     succ = 0;
 % 	%Start with all zeros since this has no predecessor
 %     if size(x) == 1
@@ -12,12 +12,12 @@ function succ = successor(x, n, allBin)
 %     end
 %     succ = [succ, successor(x(1,1:n-1), n-1)];
 
-    i = 1 + sum(x.*(2.^[length(x)-1 : -1 : 0]));
+    currentIndex = currentIndex + 1;
 
-    if(i == 2^n)
+    if(currentIndex == height(allBin))
         succ = ones(1,n);
     else
-        succ = allBin(i+1, :);
+        succ = allBin(currentIndex, :);
     end
 
 end

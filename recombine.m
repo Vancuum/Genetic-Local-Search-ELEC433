@@ -42,7 +42,7 @@ function bestCodes = recombine(parentPop, p, n, d)
 
         %Generate random codeword z and random integer D between 0 and n+d
         z = randi([0,1],1, n);
-        D = randi([0,n+d]); %Not sure if this interval should start at 0 or d
+        D = randi([d+1,n+d-1]); %Not sure if this interval should start at 0 or d
         %Create variables to keep track of where we are in each child code
         cnt1 = 1;
         cnt2 = 1;

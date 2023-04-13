@@ -5,17 +5,17 @@
 % d - minimum distance
 % p - population size
 % maxSize - maximum size for starting population(LB/10)
-function maxCode = geneticSearch(n,p,d,maxSize)
+function maxCode = geneticSearch(n,p,d,maxSize,best)
     %Might need to find a more clever way to find successor since the message 
     %array is currently limiting how large codes we can check since it grows 
     %with 2^n. That said, it is also pretty quick. Maybe there is an equally
     %fast(or faster) algorithm that doesn't use memory though.
-    allBin = genAllBin(n);
+    allBin = genAllBin(n,d);
     
     % Randomly generate input population of codes
     codePop = genInitPop(n, p, d, maxSize);
     
-    for i = 1:200
+    for i = 1:50
         % Search for better codes in the neighbourhood of given codes
         for j = 1:p
             codePop{j} = localSearch(codePop{j}, n, d, allBin);
@@ -26,13 +26,13 @@ function maxCode = geneticSearch(n,p,d,maxSize)
         % Recombine new codes together to vary population
         codePop = recombine(codePop, p, n, d);
         
-        % Stop the search if a maximal code is found
+        % Stop the search if an optimal code is found
         maxCode = codePop{findMaxIndex(codePop, p)};
-        if height(maxCode) == 144
+        if height(maxCode) == best
             fprintf("Upper bound met!")
             return
         end
-        fprintf("\n\nGeneration %d completed.Best code: %d\n\n",i, ...
+        fprintf("\n\nGeneration %d completed.Best code: %d\n",i, ...
             height(maxCode))
     end
 end
